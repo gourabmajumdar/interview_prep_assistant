@@ -45,8 +45,14 @@ load_dotenv()
 class Config:
     """Configuration settings for AI models and search"""
     # AI Model API Keys
-    ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
-    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+    try:
+        # Try to get from Streamlit secrets (for deployed app)
+        ANTHROPIC_API_KEY = st.secrets.get("ANTHROPIC_API_KEY", "")
+        OPENAI_API_KEY = st.secrets.get("OPENAI_API_KEY", "")
+    except:
+        # Fall back to environment variables (for local development)
+        ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
+        OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 
     # Search Configuration
     SERP_API_KEY = os.getenv("SERP_API_KEY", "")  # For Google Search
