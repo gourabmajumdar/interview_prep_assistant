@@ -1,0 +1,13 @@
+streamlit
+anthropic
+openai
+duckduckgo-search
+beautifulsoup4
+selenium
+webdriver-manager
+aiohttp
+asyncio
+pandas
+python-dotenv
+tenacity
+markdown2
